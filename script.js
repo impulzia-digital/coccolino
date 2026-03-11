@@ -1,21 +1,29 @@
-const revealItems = document.querySelectorAll('.section, .hero-panel, .hero-copy, .pricing-card, .service-panel, .info-card, .phase-item, .closing-panel');
+const slides = document.querySelectorAll('.slide');
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('reveal', 'is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
-  }
-);
+if (slides.length > 0) {
+  slides[0].classList.add('is-visible');
+}
 
-revealItems.forEach((item) => {
-  item.classList.add('reveal');
-  observer.observe(item);
-});
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    },
+    {
+      threshold: 0.18,
+      rootMargin: '0px 0px -8% 0px'
+    }
+  );
+
+  slides.forEach((slide) => {
+    observer.observe(slide);
+  });
+} else {
+  slides.forEach((slide) => {
+    slide.classList.add('is-visible');
+  });
+}
