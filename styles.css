@@ -136,6 +136,7 @@ section {
   text-align: center;
   font-size: clamp(1rem, 1.7vw, 1.24rem);
   line-height: 1.6;
+  text-wrap: balance;
 }
 
 .slide--cover {
@@ -174,6 +175,7 @@ section {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 32px;
+  align-items: stretch;
 }
 
 .card {
@@ -369,6 +371,8 @@ section {
   margin: auto auto 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 16px;
   font-size: 1.05rem;
   font-weight: 700;
@@ -377,9 +381,12 @@ section {
 }
 
 @media (max-width: 1080px) {
-  .card-row,
   .pricing-layout {
     grid-template-columns: 1fr;
+  }
+
+  .card-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .pricing-narrative {
@@ -387,6 +394,41 @@ section {
   }
 
   .card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 920px) {
+  .slide {
+    padding: 36px 28px;
+  }
+
+  .slide h2 {
+    font-size: clamp(2.4rem, 7vw, 4.4rem);
+  }
+
+  .card-row,
+  .pricing-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-layout {
+    gap: 28px;
+  }
+
+  .phase {
+    grid-template-columns: 78px 1fr;
+    gap: 20px;
+  }
+
+  .phase-letter {
+    font-size: clamp(3.3rem, 8vw, 4.8rem);
+  }
+
+  .price-card,
+  .price-card--wide {
+    grid-column: auto;
+    max-width: none;
     min-height: auto;
   }
 }
@@ -422,15 +464,10 @@ section {
     font-size: 3.6rem;
   }
 
-  .pricing-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .price-card,
-  .price-card--wide {
-    grid-column: auto;
-    max-width: none;
-    min-height: auto;
+  .slide-footer {
+    justify-content: center;
+    text-align: center;
+    font-size: 0.9rem;
   }
 
   .closing-pill {
@@ -439,7 +476,41 @@ section {
     border-radius: 24px;
   }
 
+  .closing-url {
+    margin-top: 4vh;
+  }
+}
+
+@media (max-width: 420px) {
+  .slide {
+    padding: 24px 16px;
+    gap: 22px;
+  }
+
+  .slide h1 {
+    font-size: clamp(2.9rem, 15vw, 4.2rem);
+  }
+
+  .slide h3 {
+    font-size: 1.08rem;
+  }
+
+  .card {
+    padding: 38px 18px 18px;
+  }
+
+  .phase ul {
+    padding-left: 20px;
+  }
+
+  .conditions-box,
+  .closing-pill {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
   .slide-footer {
-    font-size: 0.9rem;
+    gap: 8px;
+  }
   }
 }
